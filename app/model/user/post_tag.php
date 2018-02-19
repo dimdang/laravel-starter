@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\model\user;
 
 use Illuminate\Database\Eloquent\Model;
 
-class role extends Model
+class post_tag extends Model
 {
     //
 }

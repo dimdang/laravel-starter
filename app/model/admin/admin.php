@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\model\admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class admin_role extends Model
+class admin extends Model
 {
     //
 }
