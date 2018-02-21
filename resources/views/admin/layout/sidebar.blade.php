@@ -26,10 +26,10 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>G B</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Posts</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Category</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Tags</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>User</span></a></li>
+            <li><a href="{{ route('post.index') }}"><i class="fa fa-circle-o text-yellow"></i> <span>Posts</span></a></li>
+            <li><a href="{{ route('category.index') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Category</span></a></li>
+            <li><a href="{{ route('tag.index') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Tags</span></a></li>
+            <li><a href="{{ route('user.index') }}"><i class="fa fa-circle-o text-aqua"></i> <span>User</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->
