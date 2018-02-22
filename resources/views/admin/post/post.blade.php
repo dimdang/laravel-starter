@@ -32,14 +32,17 @@
                                     <div class="form-group">
                                         <label for="title">Post Title</label>
                                         <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="title">
+                                        @if ($errors->has('title'))<span class="text-danger">{{ $errors->first('title') }}</span>@endif
                                     </div>
                                     <div class="form-group">
                                         <label for="subTitle">Sub Title</label>
                                         <input type="text" name="sub_title" class="form-control" id="exampleInputPassword1" placeholder="sub title">
+                                        @if ($errors->has('sub_title'))<span class="text-danger">{{ $errors->first('sub_title') }}</span>@endif
                                     </div>
                                     <div class="form-group">
                                         <label for="slug">Slug</label>
                                         <input type="text" name="slug" class="form-control" id="exampleInputPassword1" placeholder="slug">
+                                        @if ($errors->has('slug'))<span class="text-danger">{{ $errors->first('slug') }}</span>@endif
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

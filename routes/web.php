@@ -5,7 +5,7 @@
 
 Route::group(['namespace' => 'User'], function () {
 
-    Route::get('/', 'HomController@index');
+    Route::get('/', 'HomeController@index');
 
     Route::get('post', 'PostController@index')->name('post');
 

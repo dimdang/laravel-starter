@@ -8,7 +8,7 @@
         <section class="content-header">
             <h1>
                 General Form Elements
-                <small>Preview</small>
+                <a href="{{route('tag.index')}}"><small><i> &nbsp;&nbsp;&nbsp;<< Back</i></small></a>
             </h1>
 
             <ol class="breadcrumb">
@@ -31,15 +31,18 @@
                         <!-- /.box-header -->
                         <!-- form start -->
                         <form role="form" action="{{route('tag.store')}}" method="post">
+                            {{csrf_field()}}
                             <div class="box-body">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="title">Tag Title</label>
                                         <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="tag title">
+                                        @if ($errors->has('name'))<span class="text-danger">{{ $errors->first('name') }}</span>@endif
                                     </div>
                                     <div class="form-group">
                                         <label for="slug">Tag Slug</label>
                                         <input type="text" name="slug" class="form-control" id="exampleInputPassword1" placeholder="tag slug">
+                                        @if ($errors->has('slug'))<span class="text-danger">{{ $errors->first('slug') }}</span>@endif
                                     </div>
                                 </div>
 
