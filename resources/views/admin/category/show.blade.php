@@ -28,7 +28,7 @@
                 <div class="box-header">
                     <div>
                         <h3 class="box-title" style="margin-right: 50px">Data Post Table</h3>
-                        <a href="{{route('post.create')}}"><i class="fa fa-plus"></i></a>
+                        <a href="{{route('category.create')}}"><i class="fa fa-plus"></i></a>
                     </div>
 
                     <div class="box-tools pull-right">
@@ -47,29 +47,26 @@
                         <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Title </th>
-                            <th>Su-title</th>
+                            <th>Category </th>
                             <th>Slug</th>
-                            <th>Body</th>
                             <th>Created Date</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($posts as $post)
+                        @foreach($categories as $category)
                             <tr>
                                 <td>{{ $loop->index +1 }}</td>
-                                <td>{{ $post->name }}</td>
-                                <td>{{ $post->sub_title }}</td>
-                                <td>{{ $post->slug }}</td>
-                                <td>{{ $post->body }}</td>
-                                <td>{{ $post->created_at }}</td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->slug }}</td>
+                                <td>{{ $category->created_at }}</td>
+
                                 <td>
-                                    <a href="{{route('post.edit', $post->id)}}">
+                                    <a href="{{route('category.edit', $category->id)}}">
                                         <span class="glyphicon glyphicon-edit"></span>
                                     </a>
                                 </td>
                                 <td>
-                                    <form id="delete-tag{{$post->id}}" method="post" action="{{route('post.destroy', $post->id)}}" style="display: none">
+                                    <form id="delete-tag{{$category->id}}" method="post" action="{{route('category.destroy', $category->id)}}" style="display: none">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
                                     </form>
@@ -77,7 +74,7 @@
                                     <a href="" onClick="if (confirm('Are you sure to delete?'))
                                             {
                                             event.preventDefault();
-                                            document.getElementById('delete-tag{{$post->id}}').submit();
+                                            document.getElementById('delete-tag{{$category->id}}').submit();
                                             }else
                                             {
                                             event.preventDefault();
@@ -91,10 +88,8 @@
                         <tfoot>
                         <tr>
                             <th>No.</th>
-                            <th>Title </th>
-                            <th>Su-title</th>
+                            <th>Category </th>
                             <th>Slug</th>
-                            <th>Body</th>
                             <th>Created Date</th>
                         </tr>
                         </tfoot>

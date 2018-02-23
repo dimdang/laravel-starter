@@ -5,6 +5,11 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
+            <h1>
+                General Form Posts
+                <a href="{{route('post.index')}}"><small><i> &nbsp;&nbsp;&nbsp;<< Back</i></small></a>
+            </h1>
+
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li><a href="#">Forms</a></li>
@@ -25,7 +30,7 @@
                         <!-- /.box-header -->
                         <!-- form start -->
 
-                        <form role="form" action="{{ route('post.store') }}" method="post">
+                        <form role="form" action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="box-body">
                                 <div class="col-lg-6">

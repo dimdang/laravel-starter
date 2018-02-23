@@ -41,10 +41,16 @@ class PostController extends Controller
             'title' => 'required',
             'sub_title' => 'required',
             'slug' => 'required',
-            'body' => 'required',
+            'body' => 'required'
         ]);
 
+        if ($request->hasFile('image')){
+            //$imageName = $request->image->getClientOriginalname();
+            $imageName = $request->image->store('public/image');
+        }
+
         $post = new Post();
+        $post->image = $imageName;
         $post->title = $request->title;
         $post->sub_title = $request->sub_title;
         $post->slug = $request->slug;
@@ -73,7 +79,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post['post'] = Post::where('id', $id)->first();
+        return view('admin.post.edit', $post);
     }
 
     /**
@@ -85,7 +92,19 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $this->validate($request, [
+            'title' => 'required',
+            'sub_title' => 'required',
+            'slug' => 'required',
+            'body' => 'required'
+        ]);
+
+        $post = Post::find($id);
+        $post->fill($data);
+        $post->save();
+
+
+        return redirect(route('post.index'));
     }
 
     /**
@@ -96,6 +115,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

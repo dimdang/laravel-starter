@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\model\user\category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.post.show');
+        $category['categories'] = Category::all();
+        return view('admin.category.show', $category);
     }
 
     /**
@@ -35,7 +37,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'slug' => 'required'
+        ]);
+
+        Category::create($data);
+
+        return redirect(route('category.index'));
     }
 
     /**
@@ -57,7 +66,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category['category'] = Category::where('id', $id)->first();
+        return view('admin.category.edit', $category);
     }
 
     /**
@@ -69,7 +79,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'slug' => 'required'
+        ]);
+
+        $category = Category::find($id);
+        $category->fill($data);
+        $category->save();
+
+        return redirect(route('category.index'));
     }
 
     /**
@@ -80,6 +99,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::where('id', $id)->delete();
+        return redirect()->back();
     }
 }
